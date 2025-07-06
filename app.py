@@ -1,9 +1,12 @@
 import os
-
 from flask import Flask, jsonify
 from scraper import obtener_precio_cafe
 
 app = Flask(__name__)
+
+@app.route("/", methods=["GET"])
+def home():
+    return jsonify({"mensaje": "API de precio del café."})
 
 @app.route("/api/precio", methods=["GET"])
 def get_precio():
@@ -16,4 +19,3 @@ def get_precio():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
