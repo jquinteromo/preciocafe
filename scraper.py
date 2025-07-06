@@ -14,7 +14,7 @@ def obtener_precio_cafe():
         for page in reader.pages:
             text += page.extract_text()
 
-        match = re.search(r'\$\s?([\d\.]+)', text)
+        match = re.search(r'([2-3]\.\d{3}\.\d{3})\s+COP', text)
         if match:
             precio = match.group(1)
             return precio
