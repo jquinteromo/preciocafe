@@ -1,8 +1,11 @@
 import os
 from flask import Flask, jsonify
+from flask_cors import CORS
 from scraper import obtener_precio_cafe
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route("/", methods=["GET"])
 def home():
